@@ -232,13 +232,14 @@ int main() {
 	spawn(button, 3);
 	computePrimes(0);
 	
+	
 }
 
 
 //Yield to blink if time is right.
 ISR(TIMER1_COMPA_vect) {
 	
-	//Spawns anc change to the new thread.
+	//Spawns and change to the new thread.
 	spawn(blink, 0);
 	yield();
 }

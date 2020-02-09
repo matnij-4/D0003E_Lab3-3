@@ -650,7 +650,7 @@ ISR(TIMER1_COMPA_vect) {
  338:	ef 93       	push	r30
  33a:	ff 93       	push	r31
 	
-	//Spawns anc change to the new thread.
+	//Spawns and change to the new thread.
 	spawn(blink, 0);
  33c:	60 e0       	ldi	r22, 0x00	; 0
  33e:	70 e0       	ldi	r23, 0x00	; 0
