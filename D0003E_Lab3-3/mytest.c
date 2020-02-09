@@ -12,18 +12,10 @@
 #include <avr/interrupt.h>
 
 
-//Global PP
-int pp;
-
-
-//The Mutex for the button and blink.
-mutex mutexButton = MUTEX_INIT;
-mutex mutexBlink = MUTEX_INIT;
-
 //The counter for the button.
 int counterButton = 0;
 
-// Flag so blick dose it half the time.
+// Flag so blink dose it half the time.
 bool halftime = true;
 
 
@@ -141,8 +133,7 @@ bool is_prime(long i)
 
 void printAt(long num, int pos) {
 	
-	
-	pp = pos;
+	int pp = pos;
 	writeChar( (num % 100) / 10 + '0', pp);
 	pp++;
 	writeChar( num % 10 + '0', pp);
@@ -259,11 +250,11 @@ ISR(PCINT1_vect){
 	//Read the pin.
 	if((PINB >> 7) == 0) {
 		
-		//Need global counter to the boutton.
+		//Need global counter to the button.
 		counterButton++;
 		
 		
-		//Spawns anc change to the new thread.
+		//Spawns and change to the new thread.
 		spawn(button, 4);
 		yield();
 	}
